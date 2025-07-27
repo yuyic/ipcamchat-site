@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IPCamChat - Smart AI-powered RTSP camera app with subscription access and secure sharing." />
+  <title>IPCamChat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+  }
+</style>
+  <script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary100: rgb(212 234 247);
+      --primary200: rgb(182 204 216);
+      --primary300: rgb(59 60 61);
+      --accent100: rgb(113 196 239);
+      --accent200: rgb(0 102 140);
+      --text100: rgb(29 28 28);
+      --text200: rgb(49 61 68);
+      --bg100: rgb(255 254 251);
+      --bg200: rgb(245 244 241);
+      --bg300: rgb(204 203 200);
+    }
+    .dark {
+      --primary100: rgb(108 53 222);
+      --primary200: rgb(163 100 255);
+      --primary300: rgb(255 199 255);
+      --accent100: rgb(203 128 255);
+      --accent200: rgb(55 55 55);
+      --text100: rgb(255 255 255);
+      --text200: rgb(224 224 224);
+      --bg100: rgb(36 27 53);
+      --bg200: rgb(52 42 69);
+      --bg300: rgb(77 66 95);
+    }
+  </style>
+</head>
+<body class="bg-[var(--bg100)] text-[var(--text100)]">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-[var(--primary100)] to-[var(--primary200)] dark:from-[var(--primary100)] dark:to-[var(--primary200)] text-[var(--text100)] dark:text-white text-center p-10">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">IPCamChat</h1>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-6">
+      Smart RTSP camera app with AI detection, subscription control, and secure video sharing.
+    </p>
+    <div class="flex justify-center gap-4">
+      <a href="#features" class="bg-[var(--accent100)] text-white px-6 py-2 rounded-full font-semibold">Learn More</a>
+      <a href="/download" class="bg-[var(--accent200)] text-white px-6 py-2 rounded-full font-semibold">Download App</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 px-6 md:px-20 bg-[var(--bg200)]">
+    <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="text-center">
+        <div class="mb-4 flex justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            >
+            <path d="M15 3a2 2 0 0 1 1.995 1.85l.005 .15a1 1 0 0 0 .883 .993l.117 .007h1a3 3 0 0 1 2.995 2.824l.005 .176v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9a3 3 0 0 1 2.824 -2.995l.176 -.005h1a1 1 0 0 0 1 -1a2 2 0 0 1 1.85 -1.995l.15 -.005h6zm-3 7a3 3 0 0 0 -2.985 2.698l-.011 .152l-.004 .15l.004 .15a3 3 0 1 0 2.996 -3.15z" />
+        </svg>
+
+        </div>
+        <h3 class="text-xl font-semibold mb-2">RTSP Live Streaming</h3>
+        <p class="text-sm text-[var(--text200)]">Connect your IP cameras easily and view real-time video streams anytime.</p>
+      </div>
+      <div class="text-center">
+        <div class="mb-4 flex justify-center">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3v-3a5 5 0 0 1 5 -5m0 12a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2m0 -10a3 3 0 0 0 -3 3v3h6v-3a3 3 0 0 0 -3 -3" />
+          </svg>
+          
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Access Control</h3>
+        <p class="text-sm text-[var(--text200)]">Manage who can watch your camera feeds with secure sharing and subscriptions.</p>
+      </div>
+      <div class="text-center">
+        <div class="mb-4 flex justify-center">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M9 20a2 2 0 0 1 -2 2h-4a1 1 0 0 1 0 -2h4v-2.997l-.343 .001a1 1 0 0 1 -.117 -.007l-.105 -.001c-2.94 -.11 -5.317 -2.399 -5.43 -5.263l-.005 -.216c0 -2.747 2.08 -5.01 4.784 -5.417l.114 -.016l.07 -.181c.663 -1.62 2.056 -2.906 3.829 -3.518l.244 -.08c2.194 -.667 4.614 -.224 6.36 1.176c1.385 1.108 2.187 2.686 2.25 4.34l.004 .212l.091 .003c2.3 .107 4.143 1.961 4.25 4.27l.004 .211c0 2.478 -1.997 4.487 -4.465 4.487h-1.535v2.996h4a1 1 0 0 1 0 2h-4a2 2 0 0 1 -2 -2v-2.997h-2v3.997a1 1 0 0 1 -2 0v-3.997h-2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">AI Event Detection</h3>
+        <p class="text-sm text-[var(--text200)]">Get notified when motion or abnormal behavior is detected.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Subscription Display Section -->
+  <section id="plans" class="py-16 px-6 md:px-20 bg-[var(--bg300)] text-[var(--text100)] dark:text-white">
+    <h2 class="text-3xl font-bold text-center mb-12">Weekly Subscription Plans</h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">1 Camera</h3>
+        <p class="text-sm text-[var(--text200)] mb-4">Monitor a single camera with full access and AI detection.</p>
+      </div>
+      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">2 Cameras</h3>
+        <p class="text-sm text-[var(--text200)] mb-4">Perfect for home and small office setups with two active feeds.</p>
+      </div>
+      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-semibold mb-2">3 Cameras</h3>
+        <p class="text-sm text-[var(--text200)] mb-4">Ideal for more complex environments requiring multiple views.</p>
+      </div>
+    </div>
+    <p class="text-center text-sm mt-6">Subscriptions renew weekly and are managed inside the mobile app.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--bg300)] text-white text-center p-6 mt-16">
+    <p>© 2025 IPCamChat. All rights reserved.</p>
+    <p class="text-sm mt-2">Questions? <a href="mailto:support@ipcamchat.com" class="underline">Contact us</a></p>
+  </footer>
+</body>
+</html>
