@@ -481,5 +481,21 @@
       <a href="/terms-of-service.html" target="_blank" class="underline hover:text-[var(--accent100)]">Terms of Service</a>
     </div>
   </footer>
+
+  <!-- Custom Feedback Section -->
+  <section id="feedback" class="py-16 px-6 md:px-20 bg-[var(--bg100)] text-[var(--text100)]">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">We Value Your Feedback</h2>
+    <p class="text-center mb-8 text-[var(--text200)]">Have suggestions, feature requests, or found a bug? Let us know!</p>
+    <form 
+      class="max-w-xl mx-auto bg-white dark:bg-[var(--bg200)] p-8 rounded-2xl shadow flex flex-col gap-4"
+      action="https://formspree.io/f/mrbyapzl" method="POST"
+      >
+      <label class="text-left font-semibold" for="feedback-message">Your Feedback</label>
+      <textarea id="feedback-message" name="message" required rows="5" class="rounded-lg border border-[var(--bg300)] p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent100)] resize-vertical"></textarea>
+      <label class="text-left font-semibold" for="feedback-email">Your Email (optional)</label>
+      <input id="feedback-email" name="email" type="email" class="rounded-lg border border-[var(--bg300)] p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent100)]" placeholder="you@email.com" />
+      <button type="submit" class="bg-[var(--accent100)] text-white px-6 py-2 rounded-full font-semibold hover:bg-[var(--accent200)] transition">Send Feedback</button>
+    </form>
+  </section>
 </body>
 </html>
