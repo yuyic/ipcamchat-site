@@ -3,87 +3,337 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="IPCamChat - Smart AI-powered RTSP camera app with subscription access and secure sharing." />
-  <title>IPCamChat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
-
-<style>
-  body {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-  }
-
-  h1, h2, h3 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 500;
-  }
-</style>
-  <script>
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
-  <script>
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (e.matches) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    });
-  </script>
+  <title>GuardChat — AI Chatbot for IP Security Cameras</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="camera-icon.png">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
-    :root {
-      --primary100: rgb(212 247 234);   /* light green */
-      --primary200: rgb(182 216 204);   /* lighter green */
-      --primary300: rgb(59 61 59);      /* dark gray-green */
-      --accent100: rgb(56 189 98);      /* green-500 */
-      --accent200: rgb(21 128 61);      /* green-700 */
-      --text100: rgb(29 28 28);
-      --text200: rgb(49 61 68);
-      --bg100: rgb(255 254 251);
-      --bg200: rgb(245 244 241);
-      --bg300: rgb(204 203 200);
+    html { scroll-behavior: smooth; }
+    .floating { animation: float 4s ease-in-out infinite; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    .dark {
-      --primary100: rgb(34 197 94);     /* green-500 dark */
-      --primary200: rgb(22 163 74);     /* green-600 dark */
-      --primary300: rgb(255 199 255);
-      --accent100: rgb(132 225 188);    /* green-300 */
-      --accent200: rgb(21 128 61);      /* green-700 */
-      --text100: rgb(255 255 255);
-      --text200: rgb(224 224 224);
-      --bg100: rgb(36 27 53);
-      --bg200: rgb(52 42 69);
-      --bg300: rgb(77 66 95);
+    .fade-in { opacity: 0; animation: fadeIn 0.6s forwards ease-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body class="bg-[var(--bg100)] text-[var(--text100)]">
-  <!-- Hero Section -->
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-b from-[var(--primary100)] to-[var(--primary200)] dark:from-[var(--primary100)] dark:to-[var(--primary200)] text-[var(--text100)] dark:text-white text-center p-10">
 
-    <!-- Optimized SVG Logo -->
-    <div class="flex justify-center mb-6">
-      <svg class="w-48 h-auto md:w-64 text-[var(--accent100)] dark:text-white" viewBox="0 0 768 717" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" d="M312.4,241c19.6,19.6,19.6,51.4,0,71s-51.4,19.6-71,0s-19.6-51.4,0-71S292.8,221.4,312.4,241z"/>
-        <path fill="currentColor" d="M767.5,545c0-93.9-88.9-170-198.5-170v0c-109.6,0-198.5,76.1-198.5,170c0,93.9,88.9,170,198.5,170   c33.7,0,65.4-7.2,93.2-19.9l55.5,21.9l-11.6-49.2C743.9,636.8,767.5,593.3,767.5,545z M519,517c-3.9,3.9-10.2,3.9-14,0   c-3.9-3.9-3.9-10.2,0-14c3.9-3.9,10.2-3.9,14,0C522.9,506.8,522.9,513.1,519,517z M633,517c-3.9,3.9-10.2,3.9-14,0   c-3.9-3.9-3.9-10.2,0-14c3.9-3.9,10.2-3.9,14,0C636.9,506.8,636.9,513.1,633,517z"/>
-        <path fill="currentColor" d="M535.6,370c35.2-97.5,13.8-211-64.4-289.1C363.4-26.9,188.6-26.9,80.8,80.8c-107.8,107.8-107.8,282.5,0,390.3   c76.6,76.6,186.9,98.7,283,66.5C367.7,453,440.7,383.5,535.6,370z M205,347c-39.2-39.2-39.2-102.7,0-141.9   c39.2-39.2,102.7-39.2,141.9,0c39.2,39.2,39.2,102.7,0,141.9S244.2,386.2,205,347z"/>
-        <path fill="currentColor" d="M364.5,544.6c-76.6,25.2-161.9,16.8-232.8-25.1h-0.5L76,654.5h330c-26.1-29.6-41.5-66.4-41.5-106.4   C364.5,547,364.5,545.8,364.5,544.6z"/>
-      </svg>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">    
+      <h1 class="text-2xl font-bold text-green-600">IPCamChat</h1>
+      <nav class="space-x-6 text-gray-700 hidden md:flex">
+        <a href="#features" class="hover:text-green-600 transition">Features</a>
+        <!-- <a href="#how" class="hover:text-green-600 transition">How It Works</a> -->
+        <a href="#download" class="hover:text-green-600 transition">Download</a>
+      </nav>
     </div>
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">IPCamChat</h1>
+  </header>
 
-    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-6">
-      <span class="font-bold">#1st AI Chatbot for IP Cameras</span> that can answer questions, write summaries and customize personalized alerts.
+  <!-- Hero Section -->
+<section class="relative bg-gradient-to-b from-green-50 to-white overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6 py-32 flex flex-col items-center text-center" data-aos="fade-up">
+
+    <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
+      #1st AI Chat for Your IP Security Camera
+    </h1>
+
+    <p class="mt-6 text-lg text-gray-700 max-w-2xl">
+      Tired of endless footage and useless alerts? <br>     
+      Just ask — get instant answers and alerts that actually matter.
+    </p>    
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#download" class="bg-green-600 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
+        Get the App
+      </a>
+      <a href="#features" class="border border-green-600 text-green-600 px-8 py-3 rounded-xl hover:bg-green-50 transition">
+        Learns More
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- <section class="relative bg-gradient-to-b from-green-50 to-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row items-center">
+
+      
+      <div class="lg:w-1/2" data-aos="fade-right">
+        <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
+          AI Chat for Your IP Security Camera
+        </h1>
+        <p class="mt-6 text-lg text-gray-700">
+          Ask “What happened in my driveway?” and GuardChat will summarize motion events with video snapshots from your camera.
+        </p>
+        <div class="mt-10 flex space-x-4">
+          <a href="#download" class="bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
+            Get the App
+          </a>
+          <a href="#demo" class="border border-green-600 text-green-600 px-6 py-3 rounded-xl hover:bg-green-50 transition">
+            See Demo
+          </a>
+        </div>
+      </div>
+
+      
+      <div class="lg:w-1/2 mt-12 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
+        <img src="screenshot-qa-portrait.png"
+             alt="GuardChat App Preview"
+             class="w-[420px] max-w-full rounded-none shadow-none" />
+      </div>
+
+    </div>
+  </section> -->
+
+  <!-- Feature Section -->
+<section id="features" class="bg-green-50 py-16">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+
+    <!-- Text -->
+    <div class="lg:w-1/2" data-aos="fade-right">
+      <div class="flex items-center justify-center lg:justify-start gap-4">
+        <!-- Chat Bubble SVG -->
+        <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+          AI Chat
+        </h2>
+      </div>      
+      <p class="mt-4 text-lg text-gray-700">
+        Whether you want to know what happened, see your dog’s latest moments, or get a daily summary — just ask, IPCamChat shows you the answer and video snapshots instantly.
+      </p>      
+    </div>
+
+    <!-- Image -->
+    <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
+      <img src="imgs/qa_new-portrait.png"
+           alt="GuardChat App Preview"
+           class="w-[420px] max-w-full rounded-none shadow-none" />
+    </div>
+
+  </div>
+</section>
+
+<!-- Feature Section -->
+<section id="feature-chat" class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+
+    <!-- Image on the left -->
+    <div class="lg:w-1/2 flex justify-center relative" data-aos="fade-right" data-aos-delay="100">
+      <img src="imgs/alert_new-portrait.png"
+           alt="GuardChat App Preview"
+           class="w-[420px] max-w-full rounded-none shadow-none" />
+    </div>
+
+    <!-- Text on the right -->
+    <div class="lg:w-1/2 mt-8 lg:mt-0 text-center lg:text-left" data-aos="fade-left" data-aos-delay="200">
+      <!-- <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+        Custom Alerts
+      </h2> -->
+      <div class="flex items-center justify-center lg:justify-start gap-4">
+        <!-- Alert SVG -->
+        <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0h6z" />
+        </svg>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+          Custom Alerts
+        </h2>
+      </div> 
+      <p class="mt-4 text-lg text-gray-700">
+        Create unlimited alerts in plain language. Get real-time notifications delivered and watch live feeds inside the chat.
+      </p>      
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Feature Section -->
+<section id="features" class="bg-green-50 py-16">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+
+    <!-- Text -->
+    <div class="lg:w-1/2" data-aos="fade-right">
+      <div class="flex items-center justify-center lg:justify-start gap-4">
+        <!-- setup SVG -->
+        <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+          Easy Setup
+        </h2>
+      </div>      
+      <p class="mt-4 text-lg text-gray-700">
+        IPCamChat works with thousands of IP camera brands. It can automatically detect and connect ONVIF-compatible cameras, or you can quickly add any camera manually by entering its IP address — setup is fast and hassle-free.
+      </p>      
+    </div>
+
+    <!-- Image -->
+    <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
+      <img src="imgs/brands_left.png"
+           alt="GuardChat App Preview"
+           class="w-[420px] max-w-full rounded-none shadow-none" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- <section id="features" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center mb-14" data-aos="fade-up">Powerful Features</h3>
+    <div class="grid md:grid-cols-3 gap-10 text-center">
+            
+      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="100">
+        <button class="expand-btn absolute top-4 right-4 text-green-700 text-2xl font-bold">+</button>
+        <div class="feature-content">
+          <img src="chat-icon.svg" class="w-12 mx-auto mb-4" alt="">
+          <h4 class="font-semibold text-xl mb-2 text-green-700">AI Chat Interface</h4>
+          <p>Ask “What happened in my driveway?” or “Show last motion event.” It responds instantly with video context.</p>
+        </div>        
+      </div>
+
+
+      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="200">
+        <button class="expand-btn absolute top-4 right-4 text-green-700 text-2xl font-bold">+</button>
+        <div class="feature-content">
+          <img src="video-icon.svg" class="w-12 mx-auto mb-4" alt="">
+          <h4 class="font-semibold text-xl mb-2 text-green-700">Live Stream + Alerts</h4>
+          <p>Watch live feeds, get AI motion analysis, and receive smart notifications directly in the chat.</p>
+        </div>
+        <div class="feature-preview hidden mt-6">
+          <img src="live-stream-preview.png" class="rounded-xl mx-auto shadow-md" alt="Live Stream Preview">
+        </div>
+      </div>
+
+      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="300">
+        <button class="expand-btn absolute top-4 right-4 text-green-700 text-2xl font-bold">+</button>
+        <div class="feature-content">
+          <img src="cloud-icon.svg" class="w-12 mx-auto mb-4" alt="">
+          <h4 class="font-semibold text-xl mb-2 text-green-700">Smart Recording</h4>
+          <p>Automatically capture and summarize events, stored securely on your SD card or iCloud.</p>
+        </div>
+        <div class="feature-preview hidden mt-6">
+          <img src="smart-recording-preview.png" class="rounded-xl mx-auto shadow-md" alt="Smart Recording Preview">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<!-- <script>
+  // Only expand one block at a time
+  document.querySelectorAll('.expand-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.feature-card');
+      const isExpanded = card.classList.contains('expanded');
+
+      // Collapse all first
+      document.querySelectorAll('.feature-card').forEach(c => {
+        c.classList.remove('expanded');
+        c.querySelector('.feature-preview').classList.add('hidden');
+        c.querySelector('.feature-content').classList.remove('hidden');
+        c.querySelector('.expand-btn').textContent = '+';
+      });
+
+      // Expand the clicked one
+      if (!isExpanded) {
+        card.classList.add('expanded');
+        card.querySelector('.feature-preview').classList.remove('hidden');
+        card.querySelector('.feature-content').classList.add('hidden');
+        btn.textContent = '−';
+      }
+    });
+  });
+</script>
+
+<style>
+  .feature-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card.expanded {
+    background-color: #e8f5e9;
+    transform: scale(1.03);
+  }
+
+  .expand-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .expand-btn:hover {
+    transform: scale(1.2);
+  }
+
+  .feature-preview img {
+    width: 100%;
+    max-width: 280px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style> -->
+
+
+
+  <!-- How It Works -->
+  <!-- <section id="how" class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6 text-center" data-aos="fade-up">
+      <h3 class="text-3xl font-bold mb-10 text-green-700">How It Works</h3>
+      <div class="max-w-xl mx-auto text-left space-y-6">
+        <div class="flex items-start space-x-3">
+          <span class="text-green-600 font-bold text-xl">1.</span>
+          <p><span class="font-semibold">Connect:</span> Add your IP camera by scanning its QR code or entering its IP address.</p>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-green-600 font-bold text-xl">2.</span>
+          <p><span class="font-semibold">Talk:</span> Ask about activity, playback, or camera status directly in chat.</p>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-green-600 font-bold text-xl">3.</span>
+          <p><span class="font-semibold">Act:</span> Tell the camera to record, enable motion detection, or take snapshots — all through voice or text.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Download Section -->
+  <section id="download" class="py-24 bg-white text-center">
+    <h3 class="text-3xl font-bold mb-8 text-green-700" data-aos="fade-up">Download IPCamChat</h3>
+    <p class="text-gray-600 mb-6" data-aos="fade-up" data-aos-delay="100">
+      Available for iPhone on the App Store
     </p>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-6">
-      Compatible with ONVIF, RTSP and MJPEG IP cameras and thousands brands.
-    </p>
-    <div class="flex justify-center gap-4">
-      <a href="#features" class="bg-[var(--accent100)] text-white px-6 py-2 rounded-full font-semibold">Learn More</a>
+    <!-- <a href="#" data-aos="zoom-in" data-aos-delay="200">
+      <img src="appstore-badge.svg" alt="Download on the App Store" class="h-12 mx-auto hover:scale-105 transition">
+    </a> -->
+    <a href="#features" class="bg-[var(--accent100)] text-white px-6 py-2 rounded-full font-semibold">Learn More</a>
       <!-- <a href="/download" class="bg-[var(--accent200)] text-white px-6 py-2 rounded-full font-semibold">Download App</a> -->
       <a 
         href="https://apps.apple.com/app/id6504750293" 
@@ -134,368 +384,46 @@
           </svg>        
         <span class="sr-only">Download on the App Store</span>
       </a>
-
-      <script>
-        function showComingSoon() {
-          const modal = document.createElement('div');
-          modal.className = "fixed inset-0 flex items-center justify-center bg-black/50 z-50";
-          modal.innerHTML = `
-            <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow text-center max-w-xs">
-              <h3 class="text-xl font-semibold mb-4">Coming Soon</h3>
-              <p class="text-sm text-[var(--text200)] dark:text-[var(--text100)]">
-                The app is still under development and will be available shortly!
-              </p>
-              <button onclick="this.parentElement.parentElement.remove()" 
-                      class="mt-6 px-4 py-2 bg-[var(--accent100)] text-white rounded-full">
-                OK
-              </button>
-            </div>
-          `;
-          document.body.appendChild(modal);
-        }
-      </script>
-    </div>
-  </section>  
-
-  <!-- Features Section -->
-  <section id="features" class="py-16 px-6 md:px-20 bg-[var(--bg200)] ">
-    <div class="relative w-full">
-      <div id="features-carousel" class="overflow-hidden">
-        <div class="flex justify-center">
-          <div class="w-full max-w-4xl">
-            <div class="feature-item flex flex-col items-center gap-8" style="display:flex;">
-              <div class="w-full flex flex-col items-center">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-2 text-center">Camera Chat</h3>
-                <p class="text-lg md:text-xl text-[var(--text200)] mb-4 text-center">Ask questions. Get instant Al answers</p>
-                <div class="flex items-center justify-center gap-6 w-full">
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(-1)"
-                    id="feature-left-btn"
-                    aria-label="Previous feature"
-                  >
-                    &#8592;
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <img src="imgs/screenshot-qa-portrait.png" alt="Camera Chat" 
-                      class="w-48 md:w-64 lg:w-80 rounded-xl shadow" />
-                    <!-- Dots below image -->
-                    <div class="mt-2 flex gap-2 justify-center" id="feature-index-dots-0">
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-80 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(1)"
-                    id="feature-right-btn"
-                    aria-label="Next feature"
-                  >
-                    &#8594;
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="feature-item flex flex-col items-center gap-8" style="display:none;">
-              <div class="w-full flex flex-col items-center">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-2 text-center">Custom Alerts</h3>
-                <p class="text-lg md:text-xl text-[var(--text200)] mb-4 text-center">Create unlimited alerts in plain language. Get notified in real-time</p>
-                <div class="flex items-center justify-center gap-6 w-full">
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(-1)"
-                    aria-label="Previous feature"
-                  >
-                    &#8592;
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <img src="imgs/screenshot_alert-portrait.png" alt="Custom Alerts" 
-                      class="w-48 md:w-64 lg:w-80 rounded-xl shadow" />
-                    <div class="mt-2 flex gap-2 justify-center" id="feature-index-dots-1">
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-80 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(1)"
-                    aria-label="Next feature"
-                  >
-                    &#8594;
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="feature-item flex flex-col items-center gap-8" style="display:none;">
-              <div class="w-full flex flex-col items-center">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-2 text-center">Video Summary</h3>
-                <p class="text-lg md:text-xl text-[var(--text200)] mb-4 text-center">Get executive summary about daily footage</p>
-                <div class="flex items-center justify-center gap-6 w-full">
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(-1)"
-                    aria-label="Previous feature"
-                  >
-                    &#8592;
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <img src="imgs/screenshot_summary-portrait.png" alt="Video Summary" 
-                      class="w-48 md:w-64 lg:w-80 rounded-xl shadow" />
-                    <div class="mt-2 flex gap-2 justify-center" id="feature-index-dots-2">
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-80 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(1)"
-                    aria-label="Next feature"
-                  >
-                    &#8594;
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="feature-item flex flex-col items-center gap-8" style="display:none;">
-              <div class="w-full flex flex-col items-center">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-2 text-center">Cloud Backup</h3>
-                <p class="text-lg md:text-xl text-[var(--text200)] mb-4 text-center">Secure, on-demand access to all your videos and data</p>
-                <div class="flex items-center justify-center gap-6 w-full">
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(-1)"
-                    aria-label="Previous feature"
-                  >
-                    &#8592;
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <img src="imgs/screenshot-storage-portrait.png" alt="Cloud Backup" 
-                      class="w-48 md:w-64 lg:w-80 rounded-xl shadow" />
-                    <div class="mt-2 flex gap-2 justify-center" id="feature-index-dots-3">
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-80 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(1)"
-                    aria-label="Next feature"
-                  >
-                    &#8594;
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="feature-item flex flex-col items-center gap-8" style="display:none;">
-              <div class="w-full flex flex-col items-center">
-                <h3 class="text-2xl md:text-3xl font-semibold mb-2 text-center">Watch Anywhere</h3>
-                <p class="text-lg md:text-xl text-[var(--text200)] mb-4 text-center">Stream videos on any network, anytime - no setup needed</p>
-                <div class="flex items-center justify-center gap-6 w-full">
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(-1)"
-                    aria-label="Previous feature"
-                  >
-                    &#8592;
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <img src="imgs/screen-live-portrait.png" alt="Watch Anywhere" 
-                      class="w-48 md:w-64 lg:w-80 rounded-xl shadow" />
-                    <div class="mt-2 flex gap-2 justify-center" id="feature-index-dots-4">
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-40 inline-block"></span>
-                      <span class="w-2 h-2 rounded-full bg-[var(--accent100)] opacity-80 inline-block"></span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--accent100)] text-white text-2xl shadow disabled:opacity-40"
-                    onclick="scrollFeature(1)"
-                    aria-label="Next feature"
-                  >
-                    &#8594;
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      // Carousel logic: show only one feature at a time, use left/right buttons
-      let currentFeature = 0;
-      const totalFeatures = 5;
-      document.addEventListener('DOMContentLoaded', () => {
-        window.featureItems = Array.from(document.querySelectorAll('#features-carousel .feature-item'));
-        updateFeatureButtons();
-        updateFeatureIndexDots();
-      });
-      function scrollFeature(direction) {
-        if (!window.featureItems) {
-          window.featureItems = Array.from(document.querySelectorAll('#features-carousel .feature-item'));
-        }
-        window.featureItems[currentFeature].style.display = 'none';
-        currentFeature = (currentFeature + direction + window.featureItems.length) % window.featureItems.length;
-        window.featureItems[currentFeature].style.display = 'flex';
-        updateFeatureButtons();
-        updateFeatureIndexDots();
-      }
-      function updateFeatureButtons() {
-        // Optionally disable buttons at ends, or always allow circular scroll
-        // To disable at ends, uncomment below and remove modulo in scrollFeature
-        /*
-        document.getElementById('feature-left-btn').disabled = currentFeature === 0;
-        document.getElementById('feature-right-btn').disabled = currentFeature === window.featureItems.length - 1;
-        */
-      }
-      function updateFeatureIndexDots() {
-        for (let i = 0; i < totalFeatures; ++i) {
-          const dots = document.getElementById('feature-index-dots-' + i);
-          if (dots) {
-            Array.from(dots.children).forEach((dot, idx) => {
-              dot.classList.toggle('opacity-80', idx === currentFeature);
-              dot.classList.toggle('opacity-40', idx !== currentFeature);
-            });
-          }
-        }
-      }
-    </script>
-  </section>
-  <!-- Highlighted User Feedback Section -->
-  <section id="user-feedback" class="py-16 px-6 md:px-20 bg-[var(--bg100)] text-[var(--text100)]">
-    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">What Users Are Saying</h2>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow flex flex-col items-center">
-        <div class="flex mb-3">
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-        </div>
-        <blockquote class="italic text-center mb-2">"The AI chat is amazing! I can ask about my camera footage and get instant answers."</blockquote>
-        <div class="text-xs text-[var(--text200)] mt-2">— Alex P.</div>
-      </div>
-      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow flex flex-col items-center">
-        <div class="flex mb-3">
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-        </div>
-        <blockquote class="italic text-center mb-2">"Custom alerts are a game changer. I get notified only for what matters to me."</blockquote>
-        <div class="text-xs text-[var(--text200)] mt-2">— Jamie L.</div>
-      </div>
-      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow flex flex-col items-center">
-        <div class="flex mb-3">
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.175 0l-3.388 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.045 9.394c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-        </div>
-        <blockquote class="italic text-center mb-2">"Setup was super easy and the video summaries save me so much time."</blockquote>
-        <div class="text-xs text-[var(--text200)] mt-2">— Morgan S.</div>
-      </div>
-    </div>
-  </section>
-  <!-- Subscription Display Section -->
-  <section id="plans" class="py-16 px-6 md:px-20 bg-[var(--bg300)] text-[var(--text100)] dark:text-white">
-    <h2 class="text-3xl font-bold text-center mb-12">Weekly Subscription Plans</h2>
-    <div class="max-w-2xl mx-auto grid md:grid-cols-2 gap-6">      
-      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow">
-        <h3 class="text-xl font-semibold mb-4 text-center">Free</h3>
-        <div class="text-center mb-4">
-          <div class="text-3xl font-bold">
-            <sup class="text-lg">$</sup>0
-          </div>
-        </div>
-        <div class="text-left space-y-3">
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Add Unlimited Cameras
-          </p>
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Local/Remote Viewing
-          </p>
-        </div>
-      </div>
-      <div class="bg-white dark:bg-[var(--bg200)] p-6 rounded-2xl shadow">
-        <h3 class="text-xl font-semibold mb-4 text-center">Premium</h3>
-        <div class="text-center mb-4">
-          <div class="flex items-baseline justify-center">
-            <div class="text-3xl font-bold">
-              <sup class="text-lg">$</sup>4.99
-            </div>
-            <span class="text-sm text-[var(--text200)] ml-2">per camera</span>
-          </div>
-        </div>
-        <div class="text-left space-y-3">
-          <p class="text-sm text-[var(--text200)] flex items-center">            
-            Everything in Free Plan, and
-          </p>
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Camera Chat
-          </p>
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Custom Alerts
-          </p>
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Video Summary
-          </p>
-          <p class="text-sm text-[var(--text200)] flex items-center">
-            <span class="text-green-500 mr-2">✓</span>
-            Cloud Backup
-          </p>
-        </div>
-      </div>
-    </div>
-    <p class="text-center text-sm mt-6">Subscriptions renew weekly and are managed inside the mobile app.</p>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[var(--bg200)] text-white text-center p-6">
+  <footer class="bg-gray-900 text-gray-300 text-center py-8">
     <p>© 2025 IPCamChat. All rights reserved.</p>
-    <p class="text-sm mt-2">Questions? <a href="mailto:support@ipcamchat.com" class="underline">Contact us</a></p>
-    <div class="mt-4 space-x-4 text-sm">
-      <a href="/privacy-policy.html" target="_blank" class="underline hover:text-[var(--accent100)]">Privacy Policy</a>
-      <span>|</span>
-      <a href="/terms-of-service.html" target="_blank" class="underline hover:text-[var(--accent100)]">Terms of Service</a>
+    <div class="text-sm mt-3 space-x-4">
+      <a href="/privacy-policy.html" target="_blank" class="hover:text-white">Privacy</a>
+      <a href="/terms-of-service.html" target="_blank" class="hover:text-white">Terms</a>
+      <a href="mailto:support@ipcamchat.com" class="hover:text-white">Support</a>
     </div>
   </footer>
 
-  <!-- Custom Feedback Section -->
-  <section id="feedback" class="py-16 px-6 md:px-20 bg-[var(--bg100)] text-[var(--text100)]">
-    <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">We Value Your Feedback</h2>
-    <p class="text-center mb-8 text-[var(--text200)]">Have suggestions, feature requests, or found a bug? Let us know!</p>
-    <form 
-      class="max-w-xl mx-auto bg-white dark:bg-[var(--bg200)] p-8 rounded-2xl shadow flex flex-col gap-4"
-      action="https://formspree.io/f/mrbyapzl" method="POST"
-      >
-      <label class="text-left font-semibold" for="feedback-message">Your Feedback</label>
-      <textarea id="feedback-message" name="message" required rows="5" class="rounded-lg border border-[var(--bg300)] p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent100)] resize-vertical"></textarea>
-      <label class="text-left font-semibold" for="feedback-email">Your Email (optional)</label>
-      <input id="feedback-email" name="email" type="email" class="rounded-lg border border-[var(--bg300)] p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent100)]" placeholder="you@email.com" />
-      <button type="submit" class="bg-[var(--accent100)] text-white px-6 py-2 rounded-full font-semibold hover:bg-[var(--accent200)] transition">Send Feedback</button>
-    </form>
-  </section>
+  <!-- AOS & Chat Simulation -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+
+    // Simulate chat
+    function addMessage(sender, text, imageUrl = null) {
+      const chatContent = document.getElementById('chatContent');
+      const msg = document.createElement('div');
+      msg.classList.add('flex', sender === 'user' ? 'justify-end' : 'justify-start', 'fade-in');
+      msg.innerHTML = `
+        <div class="max-w-[80%] ${sender === 'user' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-800'} px-4 py-3 rounded-2xl shadow-sm">
+          <p>${text}</p>
+          ${imageUrl ? `<img src="${imageUrl}" alt="snapshot" class="rounded-lg mt-3 shadow-md border border-gray-200">` : ''}
+        </div>`;
+      chatContent.appendChild(msg);
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    window.addEventListener('load', () => {
+      const typing = document.getElementById('typingIndicator');
+      setTimeout(() => addMessage('user', 'What happened in my driveway?'), 1000);
+      setTimeout(() => typing.classList.remove('hidden'), 2200);
+      setTimeout(() => {
+        typing.classList.add('hidden');
+        addMessage('ai', 'There was motion detected at 7:42 PM. A car entered the driveway and parked for 2 minutes.', 'driveway-snapshot.jpg');
+      }, 4200);
+    });
+  </script>
 </body>
 </html>
