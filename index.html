@@ -26,8 +26,24 @@
 <body class="bg-gray-50 text-gray-800">
   <!-- Header with semantic nav -->
   <header role="banner" class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">    
-      <a href="/" class="text-2xl font-bold text-blue-600" aria-label="IPCamChat Home">IPCamChat</a>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="flex items-center gap-2 text-2xl font-bold text-blue-600" aria-label="IPCamChat Home">
+        <!-- SVG logo -->
+        <svg viewBox="0 0 744 695" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600">
+          <path fill="currentColor" d="M296.7,229.1c18.5,18.5,18.5,48.6,0,67.2s-48.6,18.5-67.2,0s-18.5-48.6,0-67.2S278.2,210.5,296.7,229.1z"/>
+          <path fill="currentColor" d="M743.8,531.2c0-89.2-84.5-161.5-188.6-161.5S366.7,442,366.7,531.2s84.5,161.5,188.6,161.5
+            c32,0,62.1-6.8,88.5-18.9l52.7,20.8l-11-46.7C721.4,618.4,743.8,577.1,743.8,531.2z M511.7,508.6c-5.9,5.9-15.4,5.9-21.2,0
+            c-5.9-5.9-5.9-15.4,0-21.2s15.4-5.9,21.2,0C517.6,493.2,517.6,502.7,511.7,508.6z M620,508.6c-5.9,5.9-15.4,5.9-21.2,0
+            c-5.9-5.9-5.9-15.4,0-21.2s15.4-5.9,21.2,0C625.9,493.2,625.9,502.7,620,508.6z"/>
+          <path fill="currentColor" d="M508.9,351.5c33.4-92.6,13.1-200.4-61.2-274.6C345.3-25.6,179.2-25.6,76.8,76.7
+            C-25.6,179.2-25.6,345.1,76.8,447.5c72.8,72.8,177.6,93.8,268.8,63.2C349.4,430.3,418.7,364.3,508.9,351.5z M194.8,329.6
+            c-37.2-37.2-37.2-97.6,0-134.8s97.6-37.2,134.8,0s37.2,97.6,0,134.8S232,366.9,194.8,329.6z"/>
+          <path fill="currentColor" d="M344.6,532.9c-72.8,23.9-153.8,16-221.2-23.8h-0.5L70.5,637.3H384
+            c-24.8-28.1-39.4-63.1-39.4-101.1C344.6,535.2,344.6,534,344.6,532.9z"/>
+        </svg>
+        IPCamChat
+      </a>
+  
       <nav role="navigation" aria-label="Main navigation" class="space-x-6 text-gray-700 hidden md:flex">
         <a href="#features" class="hover:text-blue-600 transition">Features</a>
         <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
@@ -35,6 +51,7 @@
       </nav>
     </div>
   </header>
+  
 
   <!-- Breadcrumb navigation -->
   <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 py-2 text-sm">
