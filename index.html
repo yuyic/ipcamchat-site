@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPCamChat — AI Chatbot for IP Security Cameras</title>
+  <title>IPCamChat — Custom Alerts and AI Chatbot for IP Security Cameras</title>
+  <meta name="description" content="IPCamChat - the world's 1st AI app that lets you talk to your IP security camera. You can ask your IP security camera anything and customize alerts that matter!">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="camera-icon.png">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -22,410 +23,271 @@
     }
   </style>
 </head>
-
 <body class="bg-gray-50 text-gray-800">
-
-  <!-- Header -->
-  <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+  <!-- Header with semantic nav -->
+  <header role="banner" class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">    
-      <h1 class="text-2xl font-bold text-blue-600">IPCamChat</h1>
-      <nav class="space-x-6 text-gray-700 hidden md:flex">
+      <a href="/" class="text-2xl font-bold text-blue-600" aria-label="IPCamChat Home">IPCamChat</a>
+      <nav role="navigation" aria-label="Main navigation" class="space-x-6 text-gray-700 hidden md:flex">
         <a href="#features" class="hover:text-blue-600 transition">Features</a>
         <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
         <a href="#download" class="hover:text-blue-600 transition">Download</a>
-        <!-- <a href="#feedback" class="hover:text-blue-600 transition">Feedback</a> -->
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-<section class="relative bg-gradient-to-b from-blue-50 to-white overflow-hidden">
-  <div class="max-w-5xl mx-auto px-6 py-32 flex flex-col items-center text-center" data-aos="fade-up">
+  <!-- Breadcrumb navigation -->
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 py-2 text-sm">
+    <ol class="list-none p-0 inline-flex">
+      <li class="flex items-center">
+        <a href="/" class="text-gray-600">Home</a>
+        <svg class="w-3 h-3 mx-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
+        </svg>
+      </li>
+      <li class="text-gray-800">Features</li>
+    </ol>
+  </nav>
 
-    <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
-      #1st AI That Lets You Talk to Your IP Security Camera
-    </h1>
-
-    <p class="mt-6 text-lg text-gray-700 max-w-2xl">
-      Tired of endless footage and useless alerts? <br>     
-      Just ask — get instant answers and alerts that actually matter. <br>      
-      Works with thousands of IP camera brands. <br>      
-    </p>    
-
-    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#download" class="bg-blue-600 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
-        Get the App
-      </a>
-      <a href="#features" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-xl hover:bg-blue-50 transition">
-        Learns More
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-
-  <!-- <section class="relative bg-gradient-to-b from-blue-50 to-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 py-20 flex flex-col lg:flex-row items-center">
-
-      
-      <div class="lg:w-1/2" data-aos="fade-right">
-        <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">
-          AI Chat for Your IP Security Camera
+  <!-- Main content with semantic sections -->
+  <main role="main">
+    <!-- Hero Section with improved semantics -->
+    <section aria-labelledby="hero-heading" class="relative bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6 py-32 flex flex-col items-center text-center" data-aos="fade-up">
+        <h1 id="hero-heading" class="text-5xl font-extrabold text-gray-900 leading-tight">
+          #1st AI That Lets You Talk to Your IP Security Camera
         </h1>
-        <p class="mt-6 text-lg text-gray-700">
-          Ask “What happened in my driveway?” and GuardChat will summarize motion events with video snapshots from your camera.
-        </p>
-        <div class="mt-10 flex space-x-4">
-          <a href="#download" class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
+
+        <p class="mt-6 text-lg text-gray-700 max-w-2xl">
+          Tired of endless footage and useless alerts? <br>     
+          Just ask — get instant answers and alerts that actually matter. <br>      
+          Works with thousands of IP camera brands. <br>      
+        </p>    
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#download" class="bg-blue-600 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
             Get the App
           </a>
-          <a href="#demo" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50 transition">
-            See Demo
+          <a href="#features" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-xl hover:bg-blue-50 transition">
+            Learns More
           </a>
         </div>
+
       </div>
+    </section>
 
-      
-      <div class="lg:w-1/2 mt-12 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
-        <img src="screenshot-qa-portrait.png"
-             alt="GuardChat App Preview"
-             class="w-[420px] max-w-full rounded-none shadow-none" />
-      </div>
+    <!-- Features section with improved semantics -->
+    <section aria-labelledby="features-heading" id="features" class="bg-blue-50 py-16">
+      <h2 id="features-heading" class="sr-only">Features</h2>
+      <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
 
-    </div>
-  </section> -->
-
-  <!-- Feature Section -->
-<section id="features" class="bg-blue-50 py-16">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-
-    <!-- Text -->
-    <div class="lg:w-1/2" data-aos="fade-right">
-      <div class="flex items-center justify-center lg:justify-start gap-4">
-        <!-- Chat Bubble SVG -->
-        <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-          See Less, Know More
-        </h2>
-      </div>      
-      <p class="mt-4 text-lg text-gray-700">
-        Whether you want to know what happened in my driveway, see your dog’s latest moments, or get a daily summary — just ask, IPCamChat shows you the answer and video snapshots instantly without digging through hours of footage.
-      </p>      
-    </div>
-
-    <!-- Image -->
-    <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
-      <img src="imgs/qa_new-portrait.png"
-           alt="GuardChat App Preview"
-           class="w-[420px] max-w-full rounded-none shadow-none" />
-    </div>
-
-  </div>
-</section>
-
-<!-- Feature Section -->
-<section id="feature-chat" class="bg-white py-16">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-
-    <!-- Image on the left -->
-    <div class="lg:w-1/2 flex justify-center relative" data-aos="fade-right" data-aos-delay="100">
-      <img src="imgs/alert_new-portrait.png"
-           alt="GuardChat App Preview"
-           class="w-[420px] max-w-full rounded-none shadow-none" />
-    </div>
-
-    <!-- Text on the right -->
-    <div class="lg:w-1/2 mt-8 lg:mt-0 text-center lg:text-left" data-aos="fade-left" data-aos-delay="200">
-      <!-- <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-        Custom Alerts
-      </h2> -->
-      <div class="flex items-center justify-center lg:justify-start gap-4">
-        <!-- Alert SVG -->
-        <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0h6z" />
-        </svg>
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-          Get Alerts That Matter
-        </h2>
-      </div> 
-      <p class="mt-4 text-lg text-gray-700">
-        Create unlimited alerts in plain language on anything you want like "Send me an alert when <u>my garage door is left open</u>". Get real-time notifications delivered and watch live feeds inside the chat.
-      </p>      
-    </div>
-
-  </div>
-</section>
-
-
-  <!-- Feature Section -->
-<section id="features" class="bg-blue-50 py-16">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-
-    <!-- Text -->
-    <div class="lg:w-1/2" data-aos="fade-right">
-      <div class="flex items-center justify-center lg:justify-start gap-4">
-        <!-- setup SVG -->
-        <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-          Plug, Connect, and Go
-        </h2>
-      </div>      
-      <p class="mt-4 text-lg text-gray-700">
-        IPCamChat works with thousands of IP camera brands. It can automatically detect and connect ONVIF-compatible cameras, or you can quickly add any camera manually by entering its IP address — setup is fast and hassle-free.
-      </p>      
-    </div>
-
-    <!-- Image -->
-    <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
-      <img src="imgs/brands_left.png"
-           alt="GuardChat App Preview"
-           class="w-[420px] max-w-full rounded-none shadow-none" />
-    </div>
-
-  </div>
-</section>
-
-
-<!-- <section id="features" class="py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h3 class="text-3xl font-bold text-center mb-14" data-aos="fade-up">Powerful Features</h3>
-    <div class="grid md:grid-cols-3 gap-10 text-center">
-            
-      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="100">
-        <button class="expand-btn absolute top-4 right-4 text-blue-700 text-2xl font-bold">+</button>
-        <div class="feature-content">
-          <img src="chat-icon.svg" class="w-12 mx-auto mb-4" alt="">
-          <h4 class="font-semibold text-xl mb-2 text-blue-700">AI Chat Interface</h4>
-          <p>Ask “What happened in my driveway?” or “Show last motion event.” It responds instantly with video context.</p>
-        </div>        
-      </div>
-
-
-      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="200">
-        <button class="expand-btn absolute top-4 right-4 text-blue-700 text-2xl font-bold">+</button>
-        <div class="feature-content">
-          <img src="video-icon.svg" class="w-12 mx-auto mb-4" alt="">
-          <h4 class="font-semibold text-xl mb-2 text-blue-700">Live Stream + Alerts</h4>
-          <p>Watch live feeds, get AI motion analysis, and receive smart notifications directly in the chat.</p>
+        <!-- Text -->
+        <div class="lg:w-1/2" data-aos="fade-right">
+          <div class="flex items-center justify-center lg:justify-start gap-4">
+            <!-- Chat Bubble SVG -->
+            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              See Less, Know More
+            </h2>
+          </div>      
+          <p class="mt-4 text-lg text-gray-700">
+            Whether you want to know what happened in my driveway, see your dog’s latest moments, or get a daily summary — just ask, IPCamChat shows you the answer and video snapshots instantly without digging through hours of footage.
+          </p>      
         </div>
-        <div class="feature-preview hidden mt-6">
-          <img src="live-stream-preview.png" class="rounded-xl mx-auto shadow-md" alt="Live Stream Preview">
+
+        <!-- Image -->
+        <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
+          <img src="imgs/ai_chat.png"
+               alt="GuardChat App Preview"
+               class="w-[420px] max-w-full rounded-none shadow-none" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section id="feature-chat" class="bg-white py-16">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+
+        <!-- Image on the left -->
+        <div class="lg:w-1/2 flex justify-center relative" data-aos="fade-right" data-aos-delay="100">
+          <img src="imgs/custom_alert.png"
+               alt="GuardChat App Preview"
+               class="w-[420px] max-w-full rounded-none shadow-none" />
+        </div>
+
+        <!-- Text on the right -->
+        <div class="lg:w-1/2 mt-8 lg:mt-0 text-center lg:text-left" data-aos="fade-left" data-aos-delay="200">
+          <!-- <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+            Custom Alerts
+          </h2> -->
+          <div class="flex items-center justify-center lg:justify-start gap-4">
+            <!-- Alert SVG -->
+            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0h6z" />
+            </svg>
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              Get Alerts That Matter
+            </h2>
+          </div> 
+          <p class="mt-4 text-lg text-gray-700">
+            Create unlimited alerts in plain language on anything you want like "Send me an alert when <u>my garage door is left open</u>". Get real-time notifications delivered and watch live feeds inside the chat.
+          </p>      
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section id="features" class="bg-blue-50 py-16">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+
+        <!-- Text -->
+        <div class="lg:w-1/2" data-aos="fade-right">
+          <div class="flex items-center justify-center lg:justify-start gap-4">
+            <!-- setup SVG -->
+            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              Plug, Connect, and Go
+            </h2>
+          </div>      
+          <p class="mt-4 text-lg text-gray-700">
+            IPCamChat works with thousands of IP camera brands. It can automatically detect and connect ONVIF-compatible cameras, or you can quickly add any camera manually by entering its IP address — setup is fast and hassle-free.
+          </p>      
+        </div>
+
+        <!-- Image -->
+        <div class="lg:w-1/2 mt-8 lg:mt-0 flex justify-center relative" data-aos="fade-left" data-aos-delay="200">
+          <img src="imgs/easy_setup.png"
+               alt="GuardChat App Preview"
+               class="w-[420px] max-w-full rounded-none shadow-none" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <!-- <section id="how" class="py-24 bg-white">
+      <div class="max-w-5xl mx-auto px-6 text-center" data-aos="fade-up">
+        <h3 class="text-3xl font-bold mb-10 text-blue-700">How It Works</h3>
+        <div class="max-w-xl mx-auto text-left space-y-6">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-600 font-bold text-xl">1.</span>
+            <p><span class="font-semibold">Connect:</span> Add your IP camera by scanning its QR code or entering its IP address.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-600 font-bold text-xl">2.</span>
+            <p><span class="font-semibold">Talk:</span> Ask about activity, playback, or camera status directly in chat.</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-600 font-bold text-xl">3.</span>
+            <p><span class="font-semibold">Act:</span> Tell the camera to record, enable motion detection, or take snapshots — all through voice or text.</p>
+          </div>
         </div>
       </div>
+    </section> -->
 
-      <div class="feature-card bg-gray-50 p-10 rounded-2xl shadow-sm hover:shadow-lg transition relative" data-aos="fade-up" data-aos-delay="300">
-        <button class="expand-btn absolute top-4 right-4 text-blue-700 text-2xl font-bold">+</button>
-        <div class="feature-content">
-          <img src="cloud-icon.svg" class="w-12 mx-auto mb-4" alt="">
-          <h4 class="font-semibold text-xl mb-2 text-blue-700">Smart Recording</h4>
-          <p>Automatically capture and summarize events, stored securely on your SD card or iCloud.</p>
-        </div>
-        <div class="feature-preview hidden mt-6">
-          <img src="smart-recording-preview.png" class="rounded-xl mx-auto shadow-md" alt="Smart Recording Preview">
-        </div>
-      </div>
+    <!-- FAQ section with improved semantics -->
+    <section aria-labelledby="faq-heading" id="faq" class="bg-white py-20">
+      <h2 id="faq-heading" class="text-3xl font-bold text-center text-blue-700 mb-12">
+        Frequently Asked Questions
+      </h2>
+      <div class="max-w-4xl mx-auto px-6">
+        <div role="list" class="space-y-6">
 
-    </div>
-  </div>
-</section> -->
+          <!-- FAQ Item -->
+          <div role="listitem" class="faq-item border-b border-gray-200 pb-6">
+            <h3>
+              <button class="text-left w-full flex justify-between items-center" 
+                      aria-expanded="false"
+                      aria-controls="faq-1">
+                <span class="text-lg font-medium text-gray-800">What makes this app different from existing security camera apps?</span>
+                <span class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</span>
+              </button>
+            </h3>
+            <div id="faq-1" class="faq-answer hidden mt-3 text-gray-600">
+              It’s the first AI app that lets you converse with your camera. Instead of just getting alerts and scrubbing footage, you ask questions in plain English like, “Show me everyone who came to the door,” and get instant video answers.
+            </div>
+          </div>
 
-<!-- <script>
-  // Only expand one block at a time
-  document.querySelectorAll('.expand-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.feature-card');
-      const isExpanded = card.classList.contains('expanded');
+          <div role="listitem" class="faq-item border-b border-gray-200 pb-6">
+            <h3>
+              <button class="text-left w-full flex justify-between items-center" 
+                      aria-expanded="false"
+                      aria-controls="faq-2">
+                <span class="text-lg font-medium text-gray-800">
+                  Can I customize what alerts I receive?
+                </span>
+                <span class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</span>
+              </button>
+            </h3>
+            <div id="faq-2" class="faq-answer hidden mt-3 text-gray-600">
+              Yes! You can create custom alerts in plain language — like “Send me an alert when <u> someone walks near my car </u>” or “Send me an alert when <u>my kids come home</u>.” The AI only notifies you when those events occur, reducing false alarms.
+            </div>
+          </div>      
 
-      // Collapse all first
-      document.querySelectorAll('.feature-card').forEach(c => {
-        c.classList.remove('expanded');
-        c.querySelector('.feature-preview').classList.add('hidden');
-        c.querySelector('.feature-content').classList.remove('hidden');
-        c.querySelector('.expand-btn').textContent = '+';
-      });
+          <div role="listitem" class="faq-item border-b border-gray-200 pb-6">
+            <h3>
+              <button class="text-left w-full flex justify-between items-center" 
+                      aria-expanded="false"
+                      aria-controls="faq-3">
+                <span class="text-lg font-medium text-gray-800">
+                  Do I need special hardware for the app to work?
+                </span>
+                <span class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</span>
+              </button>
+            </h3>
+            <div id="faq-3" class="faq-answer hidden mt-3 text-gray-600">
+              Nope! It supports most ONVIF-compatible IP cameras and thousands of popular brands. You can either let the app automatically discover cameras or add them manually with an IP address.
+            </div>
+          </div>  
 
-      // Expand the clicked one
-      if (!isExpanded) {
-        card.classList.add('expanded');
-        card.querySelector('.feature-preview').classList.remove('hidden');
-        card.querySelector('.feature-content').classList.add('hidden');
-        btn.textContent = '−';
-      }
-    });
-  });
-</script>
+          <div role="listitem" class="faq-item border-b border-gray-200 pb-6">
+            <h3>
+              <button class="text-left w-full flex justify-between items-center" 
+                      aria-expanded="false"
+                      aria-controls="faq-4">
+                <span class="text-lg font-medium text-gray-800">
+                  Can I review past events?
+                </span>
+                <span class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</span>
+              </button>
+            </h3>
+            <div id="faq-4" class="faq-answer hidden mt-3 text-gray-600">
+              Absolutely. All your data is securely stored in the cloud and is available for review for up to 30 days.
+            </div>
+          </div>
 
-<style>
-  .feature-card {
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+          <div role="listitem" class="faq-item border-b border-gray-200 pb-6">
+            <h3>
+              <button class="text-left w-full flex justify-between items-center" 
+                      aria-expanded="false"
+                      aria-controls="faq-5">
+                <span class="text-lg font-medium text-gray-800">
+                  Is my footage safe and private?
+                </span>
+                <span class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</span>
+              </button>
+            </h3>
+            <div id="faq-5" class="faq-answer hidden mt-3 text-gray-600">
+              Yes. All your video footage is stored and processed securely, following strict security measures. We never use your video data for training AI or any unrelated purposes — your privacy is fully protected.
+            </div>
+          </div>
 
-  .feature-card.expanded {
-    background-color: #e8f5e9;
-    transform: scale(1.03);
-  }
-
-  .expand-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .expand-btn:hover {
-    transform: scale(1.2);
-  }
-
-  .feature-preview img {
-    width: 100%;
-    max-width: 280px;
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-</style> -->
-
-
-
-  <!-- How It Works -->
-  <!-- <section id="how" class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-6 text-center" data-aos="fade-up">
-      <h3 class="text-3xl font-bold mb-10 text-blue-700">How It Works</h3>
-      <div class="max-w-xl mx-auto text-left space-y-6">
-        <div class="flex items-start space-x-3">
-          <span class="text-blue-600 font-bold text-xl">1.</span>
-          <p><span class="font-semibold">Connect:</span> Add your IP camera by scanning its QR code or entering its IP address.</p>
-        </div>
-        <div class="flex items-start space-x-3">
-          <span class="text-blue-600 font-bold text-xl">2.</span>
-          <p><span class="font-semibold">Talk:</span> Ask about activity, playback, or camera status directly in chat.</p>
-        </div>
-        <div class="flex items-start space-x-3">
-          <span class="text-blue-600 font-bold text-xl">3.</span>
-          <p><span class="font-semibold">Act:</span> Tell the camera to record, enable motion detection, or take snapshots — all through voice or text.</p>
         </div>
       </div>
-    </div>
-  </section> -->
-
-  <!-- FAQ Section -->
-<section id="faq" class="bg-white py-20">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">
-      Frequently Asked Questions
-    </h2>
-
-    <div class="space-y-6">
-
-      <!-- FAQ Item -->
-      <div class="faq-item border-b border-gray-200 pb-6 cursor-pointer">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-800">
-            What makes this app different from existing security camera apps?
-          </h3>
-          <button class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</button>
-        </div>
-        <div class="faq-answer hidden mt-3 text-gray-600">
-          It’s the first AI app that lets you converse with your camera. Instead of just getting alerts and scrubbing footage, you ask questions in plain English like, “Show me everyone who came to the door,” and get instant video answers.
-        </div>
-      </div>
-
-      <div class="faq-item border-b border-gray-200 pb-6 cursor-pointer">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-800">
-            Can I customize what alerts I receive?
-          </h3>
-          <button class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</button>
-        </div>
-        <div class="faq-answer hidden mt-3 text-gray-600">
-          Yes! You can create custom alerts in plain language — like “Send me an alert when <u> someone walks near my car </u>” or “Send me an alert when <u>my kids come home</u>.” The AI only notifies you when those events occur, reducing false alarms.
-        </div>
-      </div>      
-
-      <div class="faq-item border-b border-gray-200 pb-6 cursor-pointer">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-800">
-            Do I need special hardware for the app to work?
-          </h3>
-          <button class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</button>
-        </div>
-        <div class="faq-answer hidden mt-3 text-gray-600">
-          Nope! It supports most ONVIF-compatible IP cameras and thousands of popular brands. You can either let the app automatically discover cameras or add them manually with an IP address.
-        </div>
-      </div>  
-
-      <div class="faq-item border-b border-gray-200 pb-6 cursor-pointer">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-800">
-            Can I review past events?
-          </h3>
-          <button class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</button>
-        </div>
-        <div class="faq-answer hidden mt-3 text-gray-600">
-          Absolutely. All your data is securely stored in the cloud and is available for review for up to 30 days.
-        </div>
-      </div>
-
-      <div class="faq-item border-b border-gray-200 pb-6 cursor-pointer">
-        <div class="flex justify-between items-center">
-          <h3 class="text-lg font-medium text-gray-800">
-            Is my footage safe and private?
-          </h3>
-          <button class="faq-toggle text-blue-600 text-2xl font-bold transition-transform">+</button>
-        </div>
-        <div class="faq-answer hidden mt-3 text-gray-600">
-          Yes. All your video footage is stored and processed securely, following strict security measures. We never use your video data for training AI or any unrelated purposes — your privacy is fully protected.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Toggle Script -->
-<script>
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const answer = item.querySelector('.faq-answer');
-      const toggle = item.querySelector('.faq-toggle');
-      const isOpen = !answer.classList.contains('hidden');
-      
-      // Hide all other answers
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
-      document.querySelectorAll('.faq-toggle').forEach(t => t.textContent = '+');
-      
-      // Toggle selected
-      if (!isOpen) {
-        answer.classList.remove('hidden');
-        toggle.textContent = '−';
-      } else {
-        answer.classList.add('hidden');
-        toggle.textContent = '+';
-      }
-    });
-  });
-</script>
-
-
-
+    </section>
+  </main>
 
   <!-- Download Section -->
   <section id="download" class="py-24 bg-blue-50 text-center">
@@ -461,29 +323,11 @@
               <path fill="#FFFFFF" d="M64.662,26.588c0,1.632-0.441,2.922-1.323,3.869c-0.79,0.843-1.771,1.264-2.942,1.264    c-1.264,0-2.172-0.454-2.725-1.362h-0.04v5.055h-2.132V25.067c0-1.026-0.027-2.079-0.079-3.159h1.875l0.119,1.521h0.04    c0.711-1.146,1.79-1.718,3.238-1.718c1.132,0,2.077,0.447,2.833,1.342C64.284,23.949,64.662,25.127,64.662,26.588z M62.49,26.666    c0-0.934-0.21-1.704-0.632-2.31c-0.461-0.632-1.08-0.948-1.856-0.948c-0.526,0-1.004,0.176-1.431,0.523    c-0.428,0.35-0.708,0.807-0.839,1.373c-0.066,0.264-0.099,0.48-0.099,0.65v1.6c0,0.698,0.214,1.287,0.642,1.768    s0.984,0.721,1.668,0.721c0.803,0,1.428-0.31,1.875-0.928C62.266,28.496,62.49,27.68,62.49,26.666z"/>
               <path fill="#FFFFFF" d="M75.699,26.588c0,1.632-0.441,2.922-1.324,3.869c-0.789,0.843-1.77,1.264-2.941,1.264    c-1.264,0-2.172-0.454-2.724-1.362H68.67v5.055h-2.132V25.067c0-1.026-0.027-2.079-0.079-3.159h1.875l0.119,1.521h0.04    c0.71-1.146,1.789-1.718,3.238-1.718c1.131,0,2.076,0.447,2.834,1.342C75.32,23.949,75.699,25.127,75.699,26.588z M73.527,26.666    c0-0.934-0.211-1.704-0.633-2.31c-0.461-0.632-1.078-0.948-1.855-0.948c-0.527,0-1.004,0.176-1.432,0.523    c-0.428,0.35-0.707,0.807-0.838,1.373c-0.065,0.264-0.099,0.48-0.099,0.65v1.6c0,0.698,0.214,1.287,0.64,1.768    c0.428,0.48,0.984,0.721,1.67,0.721c0.803,0,1.428-0.31,1.875-0.928C73.303,28.496,73.527,27.68,73.527,26.666z"/>
               <path fill="#FFFFFF" d="M88.039,27.772c0,1.132-0.393,2.053-1.182,2.764c-0.867,0.777-2.074,1.165-3.625,1.165    c-1.432,0-2.58-0.276-3.449-0.829l0.494-1.777c0.936,0.566,1.963,0.85,3.082,0.85c0.803,0,1.428-0.182,1.877-0.544    c0.447-0.362,0.67-0.848,0.67-1.454c0-0.54-0.184-0.995-0.553-1.364c-0.367-0.369-0.98-0.712-1.836-1.029    c-2.33-0.869-3.494-2.142-3.494-3.816c0-1.094,0.408-1.991,1.225-2.689c0.814-0.699,1.9-1.048,3.258-1.048    c1.211,0,2.217,0.211,3.02,0.632l-0.533,1.738c-0.75-0.408-1.598-0.612-2.547-0.612c-0.75,0-1.336,0.185-1.756,0.553    c-0.355,0.329-0.533,0.73-0.533,1.205c0,0.526,0.203,0.961,0.611,1.303c0.355,0.316,1,0.658,1.936,1.027    c1.145,0.461,1.986,1,2.527,1.618C87.77,26.081,88.039,26.852,88.039,27.772z"/>
-              <path fill="#FFFFFF" d="M95.088,23.508h-2.35v4.659c0,1.185,0.414,1.777,1.244,1.777c0.381,0,0.697-0.033,0.947-0.099l0.059,1.619    c-0.42,0.157-0.973,0.236-1.658,0.236c-0.842,0-1.5-0.257-1.975-0.77c-0.473-0.514-0.711-1.376-0.711-2.587v-4.837h-1.4v-1.6h1.4    v-1.757l2.094-0.632v2.389h2.35V23.508z"/>
+              <path fill="#FFFFFF" d="M95.088,23.508h-2.35v4.659c0,1.185,0.414,1.777,1.244,1.777c0.381,0,0.697-0.033,0.947-0.099l0.059,1.619    c-0.42,0.157-0.973,0.236-1.658,0.236c-0.842,0-1.5-0.257-1.975-0.77c-0.473-0.514-0.711-1.376-0.711-2.587v-4.837h-1.4v-1.6h1.4v-1.757l2.094-0.632v2.389h2.35V23.508z"/>
               <path fill="#FFFFFF" d="M105.691,26.627c0,1.475-0.422,2.686-1.264,3.633c-0.883,0.975-2.055,1.461-3.516,1.461    c-1.408,0-2.529-0.467-3.365-1.401s-1.254-2.113-1.254-3.534c0-1.487,0.43-2.705,1.293-3.652c0.861-0.948,2.023-1.422,3.484-1.422    c1.408,0,2.541,0.467,3.396,1.402C105.283,24.021,105.691,25.192,105.691,26.627z M103.479,26.696    c0-0.885-0.189-1.644-0.572-2.277c-0.447-0.766-1.086-1.148-1.914-1.148c-0.857,0-1.508,0.383-1.955,1.148    c-0.383,0.634-0.572,1.405-0.572,2.317c0,0.885,0.189,1.644,0.572,2.276c0.461,0.766,1.105,1.148,1.936,1.148    c0.814,0,1.453-0.39,1.914-1.168C103.281,28.347,103.479,27.58,103.479,26.696z"/>
               <path fill="#FFFFFF" d="M112.621,23.783c-0.211-0.039-0.436-0.059-0.672-0.059c-0.75,0-1.33,0.283-1.738,0.85    c-0.355,0.5-0.533,1.132-0.533,1.895v5.035h-2.131l0.02-6.574c0-1.106-0.027-2.113-0.08-3.021h1.857l0.078,1.836h0.059    c0.225-0.631,0.58-1.139,1.066-1.52c0.475-0.343,0.988-0.514,1.541-0.514c0.197,0,0.375,0.014,0.533,0.039V23.783z"/>
               <path fill="#FFFFFF" d="M122.156,26.252c0,0.382-0.025,0.704-0.078,0.967h-6.396c0.025,0.948,0.334,1.673,0.928,2.173    c0.539,0.447,1.236,0.671,2.092,0.671c0.947,0,1.811-0.151,2.588-0.454l0.334,1.48c-0.908,0.396-1.98,0.593-3.217,0.593    c-1.488,0-2.656-0.438-3.506-1.313c-0.848-0.875-1.273-2.05-1.273-3.524c0-1.447,0.395-2.652,1.186-3.613    c0.828-1.026,1.947-1.539,3.355-1.539c1.383,0,2.43,0.513,3.141,1.539C121.873,24.047,122.156,25.055,122.156,26.252z     M120.123,25.699c0.014-0.632-0.125-1.178-0.414-1.639c-0.369-0.593-0.936-0.889-1.699-0.889c-0.697,0-1.264,0.289-1.697,0.869    c-0.355,0.461-0.566,1.014-0.631,1.658H120.123z"/>
             </g>
-            <g>
-              <g>
-                <path fill="#FFFFFF" d="M49.05,10.009c0,1.177-0.353,2.063-1.058,2.658c-0.653,0.549-1.581,0.824-2.783,0.824     c-0.596,0-1.106-0.026-1.533-0.078V6.982c0.557-0.09,1.157-0.136,1.805-0.136c1.145,0,2.008,0.249,2.59,0.747     C48.723,8.156,49.05,8.961,49.05,10.009z M47.945,10.038c0-0.763-0.202-1.348-0.606-1.756c-0.404-0.407-0.994-0.611-1.771-0.611     c-0.33,0-0.611,0.022-0.844,0.068v4.889c0.129,0.02,0.365,0.029,0.708,0.029c0.802,0,1.421-0.223,1.857-0.669     S47.945,10.892,47.945,10.038z"/>
-                <path fill="#FFFFFF" d="M54.909,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.009,0.718-1.727,0.718     c-0.692,0-1.243-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.712-0.698     c0.692,0,1.248,0.229,1.669,0.688C54.708,9.757,54.909,10.333,54.909,11.037z M53.822,11.071c0-0.435-0.094-0.808-0.281-1.119     c-0.22-0.376-0.533-0.564-0.94-0.564c-0.421,0-0.741,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138     c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.714-0.191,0.94-0.574     C53.725,11.882,53.822,11.506,53.822,11.071z"/>
-                <path fill="#FFFFFF" d="M62.765,8.719l-1.475,4.714h-0.96l-0.611-2.047c-0.155-0.511-0.281-1.019-0.379-1.523h-0.019     c-0.091,0.518-0.217,1.025-0.379,1.523l-0.649,2.047h-0.971l-1.387-4.714h1.077l0.533,2.241c0.129,0.53,0.235,1.035,0.32,1.513     h0.019c0.078-0.394,0.207-0.896,0.389-1.503l0.669-2.25h0.854l0.641,2.202c0.155,0.537,0.281,1.054,0.378,1.552h0.029     c0.071-0.485,0.178-1.002,0.32-1.552l0.572-2.202H62.765z"/>
-                <path fill="#FFFFFF" d="M68.198,13.433H67.15v-2.7c0-0.832-0.316-1.248-0.95-1.248c-0.311,0-0.562,0.114-0.757,0.343     c-0.193,0.229-0.291,0.499-0.291,0.808v2.796h-1.048v-3.366c0-0.414-0.013-0.863-0.038-1.349h0.921l0.049,0.737h0.029     c0.122-0.229,0.304-0.418,0.543-0.569c0.284-0.176,0.602-0.265,0.95-0.265c0.44,0,0.806,0.142,1.097,0.427     c0.362,0.349,0.543,0.87,0.543,1.562V13.433z"/>
-                <path fill="#FFFFFF" d="M71.088,13.433h-1.047V6.556h1.047V13.433z"/>
-                <path fill="#FFFFFF" d="M77.258,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.01,0.718-1.727,0.718     c-0.693,0-1.244-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.711-0.698     c0.693,0,1.248,0.229,1.67,0.688C77.057,9.757,77.258,10.333,77.258,11.037z M76.17,11.071c0-0.435-0.094-0.808-0.281-1.119     c-0.219-0.376-0.533-0.564-0.939-0.564c-0.422,0-0.742,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138     c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.713-0.191,0.939-0.574     C76.074,11.882,76.17,11.506,76.17,11.071z"/>
-                <path fill="#FFFFFF" d="M82.33,13.433h-0.941l-0.078-0.543h-0.029c-0.322,0.433-0.781,0.65-1.377,0.65     c-0.445,0-0.805-0.143-1.076-0.427c-0.246-0.258-0.369-0.579-0.369-0.96c0-0.576,0.24-1.015,0.723-1.319     c0.482-0.304,1.16-0.453,2.033-0.446V10.3c0-0.621-0.326-0.931-0.979-0.931c-0.465,0-0.875,0.117-1.229,0.349l-0.213-0.688     c0.438-0.271,0.979-0.407,1.617-0.407c1.232,0,1.85,0.65,1.85,1.95v1.736C82.262,12.78,82.285,13.155,82.33,13.433z      M81.242,11.813v-0.727c-1.156-0.02-1.734,0.297-1.734,0.95c0,0.246,0.066,0.43,0.201,0.553c0.135,0.123,0.307,0.184,0.512,0.184     c0.23,0,0.445-0.073,0.641-0.218c0.197-0.146,0.318-0.331,0.363-0.558C81.236,11.946,81.242,11.884,81.242,11.813z"/>
-                <path fill="#FFFFFF" d="M88.285,13.433h-0.93l-0.049-0.757h-0.029c-0.297,0.576-0.803,0.864-1.514,0.864     c-0.568,0-1.041-0.223-1.416-0.669s-0.562-1.025-0.562-1.736c0-0.763,0.203-1.381,0.611-1.853c0.395-0.44,0.879-0.66,1.455-0.66     c0.633,0,1.076,0.213,1.328,0.64h0.02V6.556h1.049v5.607C88.248,12.622,88.26,13.045,88.285,13.433z M87.199,11.445v-0.786     c0-0.136-0.01-0.246-0.029-0.33c-0.059-0.252-0.186-0.464-0.379-0.635c-0.195-0.171-0.43-0.257-0.701-0.257     c-0.391,0-0.697,0.155-0.922,0.466c-0.223,0.311-0.336,0.708-0.336,1.193c0,0.466,0.107,0.844,0.322,1.135     c0.227,0.31,0.533,0.465,0.916,0.465c0.344,0,0.619-0.129,0.828-0.388C87.1,12.069,87.199,11.781,87.199,11.445z"/>
-                <path fill="#FFFFFF" d="M97.248,11.037c0,0.725-0.207,1.319-0.621,1.785c-0.434,0.479-1.008,0.718-1.727,0.718     c-0.691,0-1.242-0.229-1.654-0.689c-0.41-0.459-0.615-1.038-0.615-1.736c0-0.73,0.211-1.329,0.635-1.794s0.994-0.698,1.713-0.698     c0.691,0,1.248,0.229,1.668,0.688C97.047,9.757,97.248,10.333,97.248,11.037z M96.162,11.071c0-0.435-0.094-0.808-0.281-1.119     c-0.221-0.376-0.533-0.564-0.941-0.564c-0.42,0-0.74,0.188-0.961,0.564c-0.188,0.311-0.281,0.69-0.281,1.138     c0,0.435,0.094,0.808,0.281,1.119c0.227,0.376,0.543,0.564,0.951,0.564c0.4,0,0.715-0.191,0.941-0.574     C96.064,11.882,96.162,11.506,96.162,11.071z"/>
-                <path fill="#FFFFFF" d="M102.883,13.433h-1.047v-2.7c0-0.832-0.316-1.248-0.951-1.248c-0.311,0-0.562,0.114-0.756,0.343     s-0.291,0.499-0.291,0.808v2.796h-1.049v-3.366c0-0.414-0.012-0.863-0.037-1.349h0.92l0.049,0.737h0.029     c0.123-0.229,0.305-0.418,0.543-0.569c0.285-0.176,0.602-0.265,0.951-0.265c0.439,0,0.805,0.142,1.096,0.427     c0.363,0.349,0.543,0.87,0.543,1.562V13.433z"/>
-                <path fill="#FFFFFF" d="M109.936,9.504h-1.154v2.29c0,0.582,0.205,0.873,0.611,0.873c0.188,0,0.344-0.016,0.467-0.049     l0.027,0.795c-0.207,0.078-0.479,0.117-0.814,0.117c-0.414,0-0.736-0.126-0.969-0.378c-0.234-0.252-0.35-0.676-0.35-1.271V9.504     h-0.689V8.719h0.689V7.855l1.027-0.31v1.173h1.154V9.504z"/>
-                <path fill="#FFFFFF" d="M115.484,13.433h-1.049v-2.68c0-0.845-0.316-1.268-0.949-1.268c-0.486,0-0.818,0.245-1,0.735     c-0.031,0.103-0.049,0.229-0.049,0.377v2.835h-1.047V6.556h1.047v2.841h0.02c0.33-0.517,0.803-0.775,1.416-0.775     c0.434,0,0.793,0.142,1.078,0.427c0.355,0.355,0.533,0.883,0.533,1.581V13.433z"/>
-                <path fill="#FFFFFF" d="M121.207,10.853c0,0.188-0.014,0.346-0.039,0.475h-3.143c0.014,0.466,0.164,0.821,0.455,1.067     c0.266,0.22,0.609,0.33,1.029,0.33c0.465,0,0.889-0.074,1.271-0.223l0.164,0.728c-0.447,0.194-0.973,0.291-1.582,0.291     c-0.73,0-1.305-0.215-1.721-0.645c-0.418-0.43-0.625-1.007-0.625-1.731c0-0.711,0.193-1.303,0.582-1.775     c0.406-0.504,0.955-0.756,1.648-0.756c0.678,0,1.193,0.252,1.541,0.756C121.068,9.77,121.207,10.265,121.207,10.853z      M120.207,10.582c0.008-0.311-0.061-0.579-0.203-0.805c-0.182-0.291-0.459-0.437-0.834-0.437c-0.342,0-0.621,0.142-0.834,0.427     c-0.174,0.227-0.277,0.498-0.311,0.815H120.207z"/>
-              </g>
-            </g>
-          </g>
           </svg>        
         <span class="sr-only">Download on the App Store</span>
       </a>
@@ -505,8 +349,8 @@
     </form>
   </section> -->
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 text-center py-8">
+  <!-- Footer with semantic structure -->
+  <footer role="contentinfo" class="bg-gray-900 text-gray-300 text-center py-8">
     <p>© 2025 IPCamChat. All rights reserved.</p>
     <div class="text-sm mt-3 space-x-4">
       <a href="/privacy-policy.html" target="_blank" class="hover:text-white">Privacy</a>
@@ -514,6 +358,28 @@
       <a href="mailto:support@ipcamchat.com" class="hover:text-white">Support</a>
     </div>
   </footer>
+
+  <!-- Schema.org JSON-LD markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IPCamChat",
+    "applicationCategory": "Security",
+    "operatingSystem": "iOS",
+    "offers": {
+      "@type": "Offer",
+      "price": "4.99",
+      "priceCurrency": "USD"
+    },
+    "description": "AI-powered IP camera app with natural language chat interface",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "125"
+    }
+  }
+  </script>
 
   <!-- AOS & Chat Simulation -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -545,5 +411,35 @@
     });
   </script>  
 
+  <!-- FAQ toggle script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqItems = document.querySelectorAll('.faq-item button');
+      
+      faqItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const answer = document.getElementById(item.getAttribute('aria-controls'));
+          const toggle = item.querySelector('.faq-toggle');
+          const isExpanded = item.getAttribute('aria-expanded') === 'true';
+          
+          // Toggle aria-expanded
+          item.setAttribute('aria-expanded', !isExpanded);
+
+          // Hide all other answers
+          document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+          document.querySelectorAll('.faq-toggle').forEach(t => t.textContent = '+');
+          
+          // Toggle answer visibility
+          if (isExpanded) {
+            answer.classList.add('hidden');
+            toggle.textContent = '+';
+          } else {
+            answer.classList.remove('hidden');
+            toggle.textContent = '−';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
